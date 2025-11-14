@@ -1,0 +1,126 @@
+/* ------------------------------- */
+/* MÀN HÌNH LIÊN HỆ (CONTACT PAGE) */
+/* ------------------------------- */
+
+.nav-right a.active::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #e16b2f;
+}
+
+.contact-box{
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+
+.contact-container {
+  width: 100%;
+  max-width: 950px;
+  background: #fff;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding: 40px 50px;
+}
+
+.contact-content {
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+/* BÊN TRÁI: Thông tin */
+.contact-info {
+  flex: 1 1 40%;
+  color: #333;
+}
+
+.contact-info h2 {
+  font-family: "Queens Condensed", serif;
+  font-size: 24px;
+  color: #0e1a2b;
+  margin-bottom: 20px;
+}
+
+.contact-info p {
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* BÊN PHẢI: Form liên hệ */
+.contact-form {
+  flex: 1 1 55%;
+}
+
+.contact-form h2 {
+  font-family: "Queens Condensed", serif;
+  font-size: 24px;
+  color: #0e1a2b;
+  margin-bottom: 25px;
+}
+
+/* Form layout */
+.form-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-bottom: 18px;
+}
+
+label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+input, textarea {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+  resize: none;
+}
+
+input:focus, textarea:focus {
+  border-color: #e16b2f;
+  outline: none;
+}
+
+/* Nút gửi */
+.btn-submit {
+  width: 100%;
+  padding: 14px;
+  background-color: #e16b2f;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-submit:hover {
+  background-color: #c85a22;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .contact-content {
+    flex-direction: column;
+  }
+}

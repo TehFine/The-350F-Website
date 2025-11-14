@@ -1,0 +1,91 @@
+/* Phần nội dung thanh toán */
+.checkout-container {
+  max-width: 600px;
+  margin: 80px auto;
+  background: #fff;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.checkout-container h2 {
+  text-align: center;
+  font-size: 26px;
+  color: #b04c2e;
+  margin-bottom: 30px;
+}
+
+.checkout-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  font-size: 17px;
+}
+
+.checkout-summary strong {
+  color: #222;
+}
+
+/* Tổng tiền */
+#checkoutTotal {
+  color: #b04c2e;
+  font-weight: 700;
+}
+
+/* Select phương thức thanh toán */
+select#paymentMethod {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 16px;
+  background-color: #fefefe;
+  transition: border-color 0.3s;
+}
+
+select#paymentMethod:focus {
+  border-color: #b04c2e;
+}
+
+/* QR hiển thị */
+#qrContainer {
+  background-color: #fff7f3;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(176, 76, 46, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+#qrContainer h4 {
+  color: #b04c2e;
+  margin-bottom: 15px;
+}
+
+/* Nút thanh toán */
+.btn-checkout {
+  background-color: #b04c2e;
+  color: white;
+  font-size: 17px;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-checkout:hover {
+  background-color: #953e26;
+  transform: scale(1.03);
+}
+
+/* Hiệu ứng responsive */
+@media (max-width: 600px) {
+  .checkout-container {
+    margin: 40px 15px;
+    padding: 25px;
+  }
+
+  .checkout-container h2 {
+    font-size: 22px;
+  }
+}

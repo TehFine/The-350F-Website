@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liên Hệ – The 350F</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./lienhe.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatc.ciom" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+</head>
+<body>
+
+   <header class="navbar">
+
+    <div class="nav-left">
+      <!-- <a href="./GioiThieu.html">Giới thiệu <i class="fa-solid fa-chevron-down"></i></a> -->
+      <a href="./SanPham.html" >Sản phẩm</i></a>
+      <a href="./chinhsach.html">Chính Sách</i></a>
+    </div>
+
+
+    <div class="nav-center">
+      <a href="./trangchu.html">
+        <img src="./assets/LOGO.png" alt="The 350F Logo" >
+      </a>
+    </div>
+
+
+    <div class="nav-right">
+      <a href="./LienHe.html" class="active">Liên hệ</a>
+      <a href="./giohang.html"><img src="./assets/add-to-cart.png" alt="🧺" width="30" height="30"></a>
+      <a href="#"><img src="./assets/search.png" alt="🔍" width="30" height="30"></a>
+     <div class="user-login" id="userLogin">
+      <img src="./assets/user.png" alt="User" width="24">
+       <span id="userNameLinks">
+         <a href="./DangNhap.html">Đăng Nhập</a> /
+         <a href="./DangKy.html">Đăng Ký</a>
+     </span>
+    </div>
+
+    </div>
+
+  </header>
+
+
+
+ <main class="contact-box">
+    <div class="contact-container">
+      <div class="contact-content">
+
+        <!-- Bên trái: Thông tin liên hệ -->
+        <div class="contact-info">
+          <h2>Liên hệ với The 350F</h2>
+          <p><strong>Địa chỉ Hồ Chí Minh</strong></p>
+          <p>Lầu 5 Saigon Centre, 65 Lê Lợi, P. Sài Gòn, TP.HCM</p>
+          <p>07 – 09 Hoa Phượng, P. Cầu Kiệu, TP.HCM</p>
+          <p>69A Xuân Thủy, P. An Khánh, TP.HCM</p>
+          <p><strong>Hotline:</strong> 1800 8287</p>
+          <p><strong>Email:</strong> contact@the350f.com</p>
+        </div>
+
+        <!-- Bên phải: Form gửi liên hệ -->
+        <div class="contact-form">
+          <h2>Gửi thông tin liên hệ</h2>
+          <form id="contact-form" action="#" method="post">
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fullname">Họ và tên *</label>
+                <input type="text" id="fullname" name="fullname" placeholder="Nhập họ và tên" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" placeholder="Nhập email" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone">Số điện thoại *</label>
+                <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại" pattern="[0-9]{10,11}" required>
+              </div>
+              <div class="form-group">
+                <label for="subject">Tiêu đề *</label>
+                <input type="text" id="subject" name="subject" placeholder="Nhập tiêu đề liên hệ" required>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Nội dung *</label>
+              <textarea id="message" name="message" placeholder="Nhập nội dung liên hệ" rows="5" required></textarea>
+            </div>
+
+            <button type="submit" class="btn-submit">Gửi liên hệ</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+
+
+
+  
+ <div class="fixed-contact">
+        <a href="https://zalo.me/" class="circle-btn zalo">Zalo</a>
+        <a href="https://m.me/" class="circle-btn messenger"><i class="fa-brands fa-facebook-messenger"></i></a>
+        <a href="tel:0123456789" class="circle-btn phone"><i class="fa-solid fa-phone"></i></a>
+  </div>
+
+
+    <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer-left">
+      <img src="./assets/footer.jpg" alt="The 350F Store">
+    </div>
+
+    <div class="footer-right">
+      <div class="footer-info">
+        <div class="footer-column">
+          <h3>The 350F Flagship</h3>
+          <p>Lầu 5 Saigon Centre, 65 Lê Lợi, P. Sài Gòn, TP.HCM</p>
+          <p>07-09 Hoa Phượng, P. Cầu Kiệu, TP.HCM</p>
+          <p>69A Xuân Thủy, P. An Khánh, TP.HCM</p>
+        </div>
+
+        <div class="footer-column">
+          <h3>The 350F To Go</h3>
+          <p>36 Nguyễn Trãi, P. Bến Thành, TP.HCM</p>
+          <p>05 Hoa Phượng, P. Cầu Kiệu, TP.HCM</p>
+          <p>76 Ngô Đức Kế, P. Sài Gòn, TP.HCM</p>
+        </div>
+      </div>
+
+      <div class="footer-contact">
+        <div class="contact-item">
+          <i class="fa-solid fa-phone"></i>
+          <span>1800 8287</span>
+        </div>
+
+        <div class="contact-item">
+          <i class="fa-regular fa-envelope"></i>
+          <span>contact@the350f.com</span>
+        </div>
+      </div>
+
+      <p class="slogan">Taste of Passion!</p>
+
+      <div class="footer-triangle">
+        <div class="triangle1">
+          <img src="./assets/cake.png" alt="" width="30" height="30" class="img-default">
+          <img src="./assets/cake-1.webp" alt="" width="40" height="40" class="img-hover">
+        </div>
+        <div class="triangle2">
+          <img src="./assets/roll-cake.png" alt="" width="30" height="30" class="img-default">
+         <img src="./assets/cake-2.webp" alt="" width="40" height="40" class="img-hover">
+        </div>
+        <div class="triangle3">
+          <img src="./assets/cupcake.png" alt="" width="30" height="30" class="img-default">
+         <img src="./assets/cake-3.webp" alt="" width="40" height="40" class="img-hover">
+        </div>
+      </div>
+
+      <div class="footer-company">
+        <p><strong>Công ty Cổ phần The 350F</strong></p>
+        <p>Mã số thuế: 0317557505 do Sở KHĐT TP.HCM cấp ngày 08/11/2022</p>
+        <p>Địa chỉ: 12 – 14 Phan Sào Nam, Phường Bảy Hiền, TP. Hồ Chí Minh</p>
+        <p>Văn phòng giao dịch: 11-13-15 Hoa Lan, P. Cầu Kiệu, TP. Hồ Chí Minh</p>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 The 350F. All Rights Reserved. Thiết kế web bởi Ngọc Giàu.</p>
+      </div>
+    </div>
+  </footer>
+
+
+  <script src="./hienthinguoidung.js"></script>
+  <script src="./dangxuat.js"></script>
+</body>
+</html>

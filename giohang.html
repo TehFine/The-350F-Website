@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Giỏ hàng – The 350F</title>
+  <link rel="stylesheet" href="./style.css" />
+  <link rel="stylesheet" href="./giohang.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@200..800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header class="navbar">
+    <div class="nav-left">
+      <a href="./SanPham.html">Sản phẩm</a>
+      <a href="./chinhsach.html">Chính Sách</a>
+    </div>
+
+    <div class="nav-center">
+      <a href="./trangchu.html">
+        <img src="./assets/LOGO.png" alt="The 350F Logo" />
+      </a>
+    </div>
+
+    <div class="nav-right">
+      <a href="./LienHe.html">Liên hệ</a>
+      <a href="./giohang.html" class="active">
+        <img src="./assets/add-to-cart.png" alt="🧺" width="30" height="30">
+      </a>
+      <a href="#" id="search"><img src="./assets/search.png" alt="🔍" width="30" height="30"></a>
+
+      <div class="user-login" id="userLogin">
+        <img src="./assets/user.png" alt="User" width="24">
+        <span id="userNameLinks">
+          <a href="./DangNhap.html">Đăng Nhập</a> /
+          <a href="./DangKy.html">Đăng Ký</a>
+        </span>
+      </div>
+    </div>
+
+
+    <div id="search-overlay">
+      <span id="close-search">✖</span>
+      <input type="text" id="search-input" placeholder="Tìm sản phẩm...">
+      <div id="search-results"></div>
+    </div>
+  </header>
+
+  <!-- MAIN CART AREA -->
+  <main class="cart-container">
+    <h2 class="cart-title">Giỏ hàng của bạn</h2>
+
+    <!-- Danh sách sản phẩm -->
+    <div class="cart-items" id="cartItems"></div>
+
+    <!-- Tổng tiền -->
+    <div class="cart-summary">
+      <h3>Tổng đơn hàng</h3>
+      <p id="cartTotal" class="cart-total-price">0 VND</p>
+      <button id="btnConfirmOrder" class="btn-checkout">Xác nhận đơn hàng</button>
+    </div>
+  </main>
+
+
+
+  <script  src="./hienthinguoidung.js"></script>
+  <script type="module" src="./dangxuat.js"></script>
+  <script type="module" src="./giohang.js"></script>
+  <script type="module" src="./timkiem.js"></script>
+
+</body>
+</html>

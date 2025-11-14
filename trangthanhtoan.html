@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh Toán - The 350F</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="styletrangchu.css">
+    
+    <style>
+        body { font-family: 'Times New Roman', Times, serif; margin: 0; padding: 0; background-color: #f7f3ed; color: #4a4a4a; }
+        .checkout-page { max-width: 1200px; margin: 80px auto; padding: 20px; display: flex; gap: 40px; }
+        .checkout-form-container { flex: 2; background-color: #fff; padding: 40px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); }
+        .checkout-form-container h2 { font-size: 24px; font-weight: bold; color: #7b4a2e; margin-bottom: 30px; border-bottom: 2px solid #7b4a2e; padding-bottom: 10px; }
+        .form-row { display: flex; gap: 20px; margin-bottom: 15px; }
+        .form-group { flex: 1; }
+        .form-group.full-width { flex: 1 1 100%; }
+        .form-group label { display: block; margin-bottom: 5px; font-size: 14px; font-weight: 600; }
+        .form-group input:not([type="radio"]), .form-group select, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 16px; }
+        .form-group textarea { resize: vertical; min-height: 100px; }
+
+        .checkout-summary-container { flex: 1; background-color: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); height: fit-content; position: sticky; top: 20px; }
+        .checkout-summary-container h3 { font-size: 22px; font-weight: bold; color: #7b4a2e; margin-bottom: 25px; }
+        .order-summary-list { border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 15px; }
+        .order-item { display: flex; align-items: center; margin-bottom: 15px; font-size: 14px; justify-content: space-between; }
+        .order-item img { width: 60px; height: 60px; object-fit: cover; border-radius: 4px; margin-right: 15px; }
+        .order-item-details { flex: 1; text-align: left; }
+        .order-item-name { font-weight: 600; margin: 0; color: #333; }
+        .order-item-qty { color: #777; }
+        .order-item-total { font-weight: bold; color: #7b4a2e; }
+        
+        .summary-line { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 16px; }
+        .summary-line .summary-value { font-weight: 600; }
+        .total-line { padding-top: 15px; border-top: 2px solid #7b4a2e; font-size: 18px; font-weight: bold; color: #7b4a2e; }
+
+        .btn-place-order { width: 100%; padding: 15px; margin-top: 20px; background-color: #f0c57c; color: #7b4a2e; border: none; border-radius: 5px; font-size: 18px; font-weight: bold; cursor: pointer; transition: background-color 0.3s; }
+        .btn-place-order:hover { background-color: #e0b46b; }
+        
+        @media (max-width: 1000px) { .checkout-page { flex-direction: column; margin: 40px 20px; } .checkout-summary-container { position: static; } }
+        @media (max-width: 600px) { .form-row { flex-direction: column; gap: 0; } .checkout-form-container { padding: 20px; } }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="navbar-container">
+            <nav class="nav-left">
+                <a href="./SanPham.html" class="nav-link">Sản phẩm</a>
+                <a href="./chinhsach.html" class="nav-link">Chính Sách</a>
+            </nav>
+            <div class="nav-center">
+                <a href="./trangchu.html"> <img src="./assets/LOGO.png" alt="The 350F Logo"></a>
+            </div>
+            <nav class="nav-right">
+                <a href="./LienHe.html" class="nav-link">Liên hệ</a>
+                <a href="#" class="icon-link" id="cartToggle"><img src="./assets/add-to-cart.png" alt="Cart" width="28"></a>
+                <a href="#" class="icon-link" id="searchToggle">
+                    <img src="./assets/search.png" alt="Search" width="28">
+                </a>
+                <div class="user-login">
+                    <img src="./assets/user.png" alt="User" width="24">
+                    <a href="./DangNhap.html">Đăng Nhập</a> /
+                    <a href="./DangKy.html">Đăng Ký</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-bar-container">
+            <form method="get" class="search-form-popup"> 
+                <input type="text" name="keyword" placeholder="Nhập tên sản phẩm..." required class="search-input-popup">
+                <button type="submit" class="search-button-popup">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </form>
+            <button class="close-btn" id="closeSearch">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+    </div>
+    
+    <div class="cart-overlay" id="cartOverlay">
+        <div class="cart-header">
+            <button class="cart-close-btn" id="closeCart"><i class="fa-solid fa-arrow-right"></i></button> 
+            <h3>Giỏ hàng</h3>
+        </div>
+        <div class="cart-body">
+            <p>Chưa có sản phẩm trong giỏ hàng.</p>
+        </div>
+        <div class="cart-footer">
+            <a href="./GioHang.html" class="btn-view-cart">Xem giỏ hàng</a> 
+        </div>
+    </div>
+
+    <div class="checkout-page">
+        
+        <div class="checkout-form-container">
+            <h2>Thanh toán và giao hàng</h2>
+
+            <section class="account-info">
+                <h3>Thông tin tài khoản (tùy chọn)</h3>
+                <div class="form-row">
+                    <div class="form-group full-width">
+                        <label for="address-option">Nhập địa chỉ đã lưu (tùy chọn)</label>
+                        <input type="text" id="address-option" name="address-option" placeholder="Nhập địa chỉ đã lưu...">
+                    </div>
+                </div>
+            </section>
+            
+            <section class="delivery-info">
+                <h3>Thông tin giao hàng</h3>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fullname">Họ và tên *</label>
+                        <input type="text" id="fullname" name="fullname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Số điện thoại *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group full-width">
+                        <label for="email">Địa chỉ email (tùy chọn)</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="province">Tỉnh/Thành phố *</label>
+                        <input type="text" id="province" name="province" required placeholder="Nhập Tỉnh/Thành phố">
+                    </div>
+                    <div class="form-group">
+                        <label for="district">Quận/Huyện *</label>
+                        <input type="text" id="district" name="district" required placeholder="Nhập Quận/Huyện">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="ward">Xã/Phường *</label>
+                        <input type="text" id="ward" name="ward" required placeholder="Nhập Xã/Phường">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Địa chỉ *</label>
+                        <input type="text" id="address" name="address" required placeholder="Số nhà, tên đường, thôn/xóm...">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group full-width">
+                        <label for="delivery-note">Lời chúc (Ghi chú giao hàng)</label>
+                        <textarea id="delivery-note" name="delivery-note" placeholder="Nhập lời chúc, yêu cầu đặc biệt về thời gian giao hàng..."></textarea>
+                    </div>
+                </div>
+
+            </section>
+            
+            <section class="payment-method">
+                <h3>Phương thức thanh toán</h3>
+                <div class="payment-options">
+                    <label>
+                        <input type="radio" name="payment" value="cod" checked>
+                        Thanh toán khi nhận hàng (COD)
+                    </label><br>
+                    <label>
+                        <input type="radio" name="payment" value="bank">
+                        Chuyển khoản ngân hàng
+                    </label>
+                </div>
+            </section>
+
+        </div>
+
+        <div class="checkout-summary-container">
+            <h3>Đơn hàng của bạn</h3>
+            
+            <div id="orderSummary" class="order-summary-list">
+                <p style="text-align: center; font-style: italic;">Đang tải giỏ hàng...</p>
+            </div>
+            
+            <div class="form-row" style="margin-bottom: 20px;">
+                <input type="text" placeholder="Nhập mã giảm giá" style="flex: 2; border: 1px solid #f0c57c; padding: 10px; border-radius: 4px;">
+                <button style="flex: 1; background-color: #f0c57c; color: #7b4a2e; border: none; border-radius: 4px; font-weight: 600; cursor: pointer;">Áp dụng</button>
+            </div>
+            
+            <div class="summary-line">
+                <span class="summary-label">Tạm tính</span>
+                <span class="summary-value" id="checkoutSubtotal">0 VND</span>
+            </div>
+            
+            <div class="summary-line">
+                <span class="summary-label">Giao hàng</span>
+                <span class="summary-value">Miễn phí vận chuyển</span>
+            </div>
+            
+            <div class="summary-line">
+                <span class="summary-label">VAT (8%)</span>
+                <span class="summary-value" id="checkoutVAT">0 VND</span>
+            </div>
+            
+            <div class="summary-line total-line">
+                <span class="summary-label">Tổng cộng</span>
+                <span class="summary-value" id="checkoutTotal">0 VND</span>
+            </div>
+            
+            <button class="btn-place-order">Hoàn tất đặt hàng</button>
+
+        </div>
+    </div>
+    
+        <footer class="footer">
+        <div class="footer-left">
+            <img src="./assets/footer.jpg" alt="The 350F Store">
+        </div>
+
+        <div class="footer-right">
+            <div class="footer-info">
+                <div class="footer-column">
+                    <h3>The 350F Flagship</h3>
+                    <p>Lầu 5 Saigon Centre, 65 Lê Lợi, P. Bến Nghé, TP.HCM</p>
+                    <p>07-09 Hoa Phượng, P. Cầu Kiệu, TP.HCM</p>
+                    <p>69A Xuân Thủy, P. An Khánh, TP.HCM</p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>The 350F To Go</h3>
+                    <p>36 Nguyễn Trãi, P. Bến Thành, TP.HCM</p>
+                    <p>05 Hoa Phượng, P. Cầu Kiệu, TP.HCM</p>
+                    <p>76 Ngô Đức Kế, P. Bến Nghé, TP.HCM</p>
+                </div>
+            </div>
+
+            <div class="footer-contact">
+                <div class="contact-item">
+                    <span>📞</span>
+                    <span>1800 8287</span>
+                </div>
+
+                <div class="contact-item">
+                    <span>✉</span>
+                    <span>contact@the350f.com</span>
+                </div>
+            </div>
+
+            <p class="slogan">Taste of Passion!</p>
+
+            <div class="footer-triangle">
+                <div class="triangle1">
+                    <img src="./assets/cake.png" alt="Cake" width="30" height="30" class="img-default">
+                    <img src="./assets/cake-1.webp" alt="Cake" width="40" height="40" class="img-hover">
+                </div>
+                <div class="triangle2">
+                    <img src="./assets/roll-cake.png" alt="Roll Cake" width="30" height="30" class="img-default">
+                    <img src="./assets/cake-2.webp" alt="Roll Cake" width="40" height="40" class="img-hover">
+                </div>
+                <div class="triangle3">
+                    <img src="./assets/cupcake.png" alt="Cupcake" width="30" height="30" class="img-default">
+                    <img src="./assets/cake-3.webp" alt="Cupcake" width="40" height="40" class="img-hover">
+                </div>
+            </div>
+
+            <div class="footer-company">
+                <p><strong>Công ty Cổ phần The 350F</strong></p>
+                <p>Mã số thuế: 0317557505 do Sở KHĐT TP.HCM cấp ngày 08/11/2022</p>
+                <p>Địa chỉ: 12 - 14 Phan Sào Nam, Phường Bảy Hiền, TP. Hồ Chí Minh</p>
+                <p>Văn phòng giao dịch: 11-13-15 Hoa Lan, P. Cầu Kiệu, TP. Hồ Chí Minh</p>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 The 350F. All Rights Reserved.</p>
+    </div>
+    </div>
+    </footer> 
+<button class="btn-place-order" id="btnPlaceOrder">Hoàn tất đặt hàng</button>
+
+   <script>
+        // Đợi cho đến khi toàn bộ nội dung trang được tải xong
+        document.addEventListener('DOMContentLoaded', (event) => {
+
+            // Tìm TẤT CẢ các nút có class 'btn-place-order'
+            const orderButtons = document.querySelectorAll('.btn-place-order');
+
+            // Định nghĩa hàm xử lý
+            function completeOrder() {
+                // Chuyển hướng người dùng đến trang thành công
+                window.location.href = 'datthangthanhcong.html';
+            }
+
+            // Thêm trình lắng nghe sự kiện 'click' cho MỖI nút tìm thấy
+            orderButtons.forEach(button => {
+                button.addEventListener('click', completeOrder);
+            });
+
+        });
+    </script>
+    <script src="mainscript.js"></script>
+
+</body>
+</html>
+ 

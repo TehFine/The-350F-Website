@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ – The 350F</title> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="./trangchu.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body> 
+
+      <header class="navbar">
+
+    <div class="nav-left">
+      <!-- <a href="./GioiThieu.html">Giới thiệu <i class="fa-solid fa-chevron-down"></i></a> -->
+      <a href="./SanPham.html" class="active">Sản phẩm</a>
+      <a href="./chinhsach.html">Chính Sách</a>
+    </div>
+
+
+    <div class="nav-center">
+  <a href="trangchu.html">
+    <img src="./assets/LOGO.png" alt="The 350F Logo">
+  </a>
+</div>
+
+
+
+    <div class="nav-right">
+      <a href="./LienHe.html">Liên hệ</a>
+      <a href="./giohang.html"><img src="./assets/add-to-cart.png" alt="🧺" width="30" height="30"></a>
+      <a href="./SanPham.html" id="search"><img src="./assets/search.png" alt="🔍" width="30" height="30"></a>
+     <div class="user-login" id="userLogin">
+        <img src="./assets/user.png" alt="User" width="24">
+        <span id="userNameLinks">
+          <a href="./DangNhap.html">Đăng Nhập</a> /
+           <a href="./DangKy.html">Đăng Ký</a>
+         </span>
+     </div>
+    </div>
+
+
+    <div id="search-overlay">
+      <span id="close-search">✖</span>
+      <input type="text" id="search-input" placeholder="Tìm sản phẩm...">
+      <div id="search-results"></div>
+    </div>
+
+  </header>
+
+    
+
+<div class="cart-overlay" id="cartOverlay">
+    <div class="cart-header">
+        <button class="cart-close-btn" id="closeCart"><i class="fa-solid fa-arrow-right"></i></button> 
+        <h3>Giỏ hàng</h3>
+    </div>
+    <div class="cart-body">
+        <p>Chưa có sản phẩm trong giỏ hàng.</p>
+    </div>
+    <div class="cart-footer">
+        <a href="./GioHang.html" class="btn-view-cart">Xem giỏ hàng</a> 
+    </div>
+</div>
+    <section class="hero-banner">
+        <img src="./assets/sp.jpg" alt="Sản phẩm The 350F" class="hero-image">
+    </section>
+
+    <div class="breadcrumb">
+        <a href="./trangchu.html">Trang chủ</a> / <a href="./SanPham.html">Sản phẩm</a>
+    </div>
+
+    <section class="featured-products">
+        
+        <h2 class="section-title">Sản phẩm nổi bật</h2>
+        <hr class="title-line" />
+        
+        <div class="product-grid" id="productGrid">
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="./assets/Tiramissu.jpg" alt="Tiramisu">
+                    <span class="badge hot">Hot</span>
+                    <span class="badge new">Mới</span>
+                </div>
+                <div class="product-info">
+                    <h4 class="product-name">Tiramisu</h4>
+                    <p class="product-price">Giá từ: <span>580,000 VND</span></p>
+                    <button class="btn-cart">Thêm vào giỏ hàng <i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="./assets/Dua-luoi.jpg" alt="Mousse Dưa lưới">
+                    <span class="badge hot">Hot</span>
+                    <span class="badge new">Mới</span>
+                </div>
+                <div class="product-info">
+                    <h4 class="product-name">Mousse Dưa lưới</h4>
+                    <p class="product-price">Giá từ: <span>580,000 VND</span></p>
+                    <button class="btn-cart">Thêm vào giỏ hàng <i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="./assets/Dau.jpg" alt="Mousse Dâu">
+                    <span class="badge hot">Hot</span>
+                    <span class="badge new">Mới</span>
+                </div>
+                <div class="product-info">
+                    <h4 class="product-name">Mousse Dâu</h4>
+                    <p class="product-price">Giá từ: <span>540,000 VND</span></p>
+                    <button class="btn-cart">Thêm vào giỏ hàng <i class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+
+        </div> <div class="more-btn-container">
+            <a href="./sanpham.html" class="btn-more">Xem thêm</a>
+        </div>
+
+    </section>
+
+
+    
+    
+    <section class="promo-banner">
+        <div class="promo-text-box">
+            <h2>Tinh tế</h2>
+            <hr>
+            <p>
+                The 350F mang đến hương vị bánh
+                mousse nhẹ nhàng, ít ngọt và tự nhiên
+                dành cho những ai yêu sự tinh tế trong
+                từng miếng bánh.
+            </p>
+        </div>
+    </section>
+
+    <div class="fixed-contact">
+        <a href="https://zalo.me/" class="circle-btn zalo">Zalo</a>
+        <a href="https://m.me/" class="circle-btn messenger"><i class="fa-brands fa-facebook-messenger"></i></a>
+        <a href="tel:0123456789" class="circle-btn phone"><i class="fa-solid fa-phone"></i></a>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-left">
+            <img src="./assets/footer.jpg" alt="The 350F Store">
+        </div>
+
+        <div class="footer-right">
+            <div class="footer-info">
+                <div class="footer-column">
+                    <h3>The 350F Flagship</h3>
+                    <p>Lầu 5 Saigon Centre, 65 Lê Lợi, P. Bến Nghé, TP.HCM</p>
+                    <p>07-09 Hoa Phượng, P. Cầu Kiệu, TP.HCM</p>
+                    <p>69A Xuân Thủy, P. An Khánh, TP.HCM</p>
+                </div>
+
+                <div class="footer-column">
+                    <h3>The 350F To Go</h3>
+                    <p>36 Nguyễn Trãi, P. Bến Thành, TP.HCM</p>
+                    <p>05 Hoa Phượng, P. Cầu Kiệu, TP.HCM</p>
+                    <p>76 Ngô Đức Kế, P. Bến Nghé, TP.HCM</p>
+                </div>
+            </div>
+
+            <div class="footer-contact">
+                <div class="contact-item">
+                    <span>📞</span>
+                    <span>1800 8287</span>
+                </div>
+
+                <div class="contact-item">
+                    <span>✉</span>
+                    <span>contact@the350f.com</span>
+                </div>
+            </div>
+
+            <p class="slogan">Taste of Passion!</p>
+
+            <div class="footer-triangle">
+                <div class="triangle1">
+                    <img src="./assets/cake.png" alt="Cake" width="30" height="30" class="img-default">
+                    <img src="./assets/cake-1.webp" alt="Cake" width="40" height="40" class="img-hover">
+                </div>
+                <div class="triangle2">
+                    <img src="./assets/roll-cake.png" alt="Roll Cake" width="30" height="30" class="img-default">
+                    <img src="./assets/cake-2.webp" alt="Roll Cake" width="40" height="40" class="img-hover">
+                </div>
+                <div class="triangle3">
+                    <img src="./assets/cupcake.png" alt="Cupcake" width="30" height="30" class="img-default">
+                    <img src="./assets/cake-3.webp" alt="Cupcake" width="40" height="40" class="img-hover">
+                </div>
+            </div>
+
+            <div class="footer-company">
+                <p><strong>Công ty Cổ phần The 350F</strong></p>
+                <p>Mã số thuế: 0317557505 do Sở KHĐT TP.HCM cấp ngày 08/11/2022</p>
+                <p>Địa chỉ: 12 - 14 Phan Sào Nam, Phường Bảy Hiền, TP. Hồ Chí Minh</p>
+                <p>Văn phòng giao dịch: 11-13-15 Hoa Lan, P. Cầu Kiệu, TP. Hồ Chí Minh</p>
+            </div>
+
+            <div class="footer-bottom">
+                <p>© 2025 The 350F. All Rights Reserved.</p>
+    </div>
+    </div>
+    </footer> 
+
+         
+       
+
+
+        <script type="module" src="./hienthinguoidung.js"></script>
+        <script type="module" src="./dangnhap.js"></script>
+        <script type="module" src="./dangxuat.js"></script>
+        <script src="./mainscript.js"></script> 
+        <script type="module" src="./DangKy.js"></script>
+        <script type="module" src="./timkiem.js"></script>
+    
+    </body> </html>

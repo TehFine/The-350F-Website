@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - The 350F</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="styletrangchu.css">
+
+    <style>
+        /* =========================================================
+         * BIẾN MÀU SẮC VÀ FONT (Lấy từ style của anh)
+         * ========================================================= */
+        :root {
+            --font-logo: 'Bricolage Grotesque', sans-serif;
+            --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            
+            --color-bg-light: #fcf6ee;  
+            --color-bg-main: #f7f3ed;   
+            --color-white: #ffffff;
+            
+            --color-text-dark: #083763; 
+            --color-text-brown: #7b4a2e; 
+            --color-text-nav: #b8875f;  
+            --color-text-body: #4a4a4a;
+            
+            --color-accent-gold: #f0c57c;  
+            --color-accent-orange: #e16b2f; 
+            --color-accent-green: #28a745;  
+            
+            --color-status-pending-bg: #fef3c7;
+            --color-status-pending-text: #9a6700;
+            --color-status-processing-bg: #dbeafe;
+            --color-status-processing-text: #1d4ed8;
+            --color-status-completed-bg: #d1fae5;
+            --color-status-completed-text: #065f46;
+
+            --color-border: #eee;
+        }
+
+        /* =========================================================
+         * RESET VÀ BODY
+         * ========================================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--color-bg-main);
+            color: var(--color-text-body);
+            font-size: 16px;
+        }
+        
+        a { text-decoration: none; color: inherit; }
+        
+        h1, h2, h3 {
+            font-family: var(--font-logo);
+            color: var(--color-text-dark);
+            font-weight: 700;
+        }
+        
+        /* Đảm bảo Header luôn đúng style */
+        .navbar {
+            background-color: var(--color-white);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* =========================================================
+         * NỘI DUNG CHÍNH (Dashboard + Bảng)
+         * ========================================================= */
+        .admin-main {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 50px 30px;
+        }
+        
+        /* -----------------------------------
+         * 1. Ô THỐNG KÊ (4 Ô)
+         * ----------------------------------- */
+         
+        h1 { font-size: 2.8em; margin-bottom: 30px; }
+         
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .stat-card {
+            background-color: var(--color-white);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .stat-card h3 { font-size: 1.1em; color: var(--color-text-body); font-weight: 600; margin-bottom: 15px; }
+
+        .stat-card .value {
+            font-size: 2.8em;
+            font-weight: 700;
+            color: var(--color-text-dark);
+            margin-bottom: 10px;
+            font-family: var(--font-logo);
+        }
+        
+        .stat-card .detail { font-size: 1em; color: var(--color-accent-green); font-weight: 600; }
+        
+        .stat-card.new-orders .value { color: var(--color-accent-orange); }
+        .stat-card.new-orders .detail { color: var(--color-accent-orange); }
+
+        /* -----------------------------------
+         * 2. BỘ LỌC (ANH TỰ THÊM VÀO)
+         * ----------------------------------- */
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap; 
+            gap: 15px;
+            margin: 40px 0 25px 0; /* Thêm khoảng cách */
+        }
+        .filter-bar input, .filter-bar select {
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1em;
+            font-family: var(--font-body);
+        }
+        .filter-bar input[type="text"] {
+            flex: 1; 
+            min-width: 250px; 
+        }
+        .filter-bar select {
+            background-color: var(--color-white);
+        }
+        .btn-filter {
+            padding: 0 25px;
+            border: none;
+            border-radius: 8px;
+            background-color: var(--color-text-dark); 
+            color: var(--color-white);
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn-filter:hover { background-color: #062a4d; }
+
+        /* -----------------------------------
+         * 3. BẢNG ĐƠN HÀNG GẦN ĐÂY
+         * ----------------------------------- */
+        
+        h2 { font-size: 2.5em; margin-bottom: 30px; }
+
+        .table-container {
+            background-color: var(--color-white);
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            overflow: hidden; 
+        }
+        
+        .orders-table { width: 100%; border-collapse: collapse; }
+        
+        .orders-table th, 
+        .orders-table td { padding: 18px 20px; text-align: left; border-bottom: 1px solid var(--color-border); }
+        
+        .orders-table th {
+            background-color: var(--color-bg-light); 
+            color: var(--color-text-brown);
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        
+        .orders-table td { vertical-align: middle; color: var(--color-text-body); }
+        .orders-table tbody tr:last-child td { border-bottom: none; }
+        .orders-table tbody tr:hover { background-color: #fcfcfc; }
+        
+        .orders-table th:nth-child(4), .orders-table td:nth-child(4),
+        .orders-table th:nth-child(5), .orders-table td:nth-child(5),
+        .orders-table th:nth-child(6), .orders-table td:nth-child(6) {
+            text-align: center;
+        }
+        
+        /* Trạng thái (Select box) */
+        .status-select {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            border: 1px solid var(--color-border);
+            background-color: var(--color-white);
+            -webkit-appearance: none; -moz-appearance: none; appearance: none;
+            cursor: pointer;
+            text-align: center; text-align-last: center;
+            padding-right: 25px; min-width: 140px;
+        }
+        .status-select.pending { background-color: var(--color-status-pending-bg); color: var(--color-status-pending-text); }
+        .status-select.processing { background-color: var(--color-status-processing-bg); color: var(--color-status-processing-text); }
+        .status-select.completed { background-color: var(--color-status-completed-bg); color: var(--color-status-completed-text); }
+        
+        .btn-view {
+            background-color: var(--color-accent-gold);
+            color: var(--color-text-brown);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn-view:hover { background-color: #e0b46b; }
+        
+        /* =========================================================
+         * ✨✨ CSS CHO MODAL (POPUP) CHI TIẾT ĐƠN HÀNG ✨✨
+         * ========================================================= */
+        .modal-overlay {
+            display: none; 
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal-content {
+            background-color: var(--color-white);
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            border-top: 5px solid var(--color-text-brown); 
+        }
+        .modal-close {
+            position: absolute;
+            top: 10px; right: 15px;
+            background: none; border: none;
+            font-size: 2.5em;
+            color: #aaa;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .modal-content h2 {
+            font-family: var(--font-logo);
+            color: var(--color-text-brown);
+            margin-bottom: 25px;
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: 15px;
+            font-size: 2em;
+        }
+        .modal-body { display: flex; flex-direction: column; gap: 20px; }
+        .modal-section h3 {
+            font-family: var(--font-logo);
+            color: var(--color-text-dark);
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+        .modal-section p { font-size: 1.1em; line-height: 1.6; margin-bottom: 5px; }
+        .modal-section p strong { color: #333; min-width: 100px; display: inline-block; }
+        .modal-message, .modal-address {
+            font-style: italic; color: #555; padding: 10px;
+            border-left: 3px solid var(--color-bg-light);
+            background-color: #fdfdfd;
+            border-radius: 4px;
+            margin-top: 5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .navbar-container { padding: 10px 20px; }
+            .nav-link, .icon-link { display: none; }
+        }
+        @media (max-width: 768px) {
+            .filter-bar { flex-direction: column; }
+            .orders-table th:nth-child(2), .orders-table td:nth-child(2), 
+            .orders-table th:nth-child(4), .orders-table td:nth-child(4) {
+                display: none;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="navbar-container">
+            <nav class="nav-left">
+                <a href="./admin.html" class="nav-link active">Dashboard</a>
+                <a href="./quanlydonhang.html" class="nav-link">Quản Lý Đơn hàng</a>
+            </nav>
+            
+            <div class="nav-center">
+                <a href="./admin.html"> <img src="./assets/LOGO.png" alt="The 350F Logo">
+                </a>
+            </div>
+            
+            <nav class="nav-right">
+                <a href="./quanlysanpham.html" class="nav-link">Quản Lý Sản phẩm</a>
+                <a href="./thongke.html" class="nav-link">Thống kê</a>
+                
+                <div class="user-login">
+                    <img src="./assets/user.png" alt="User" width="24">
+                    <a href="./DangNhap.html">Đăng Nhập</a> /
+                    <a href="./DangKy.html">Đăng Ký</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="admin-main">
+        
+        <h1>Dashboard</h1>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Doanh thu hôm nay</h3>
+                <div class="value">12.5M đ</div>
+                <div class="detail"><i class="fa-solid fa-arrow-up"></i> 12% so với hôm qua</div>
+            </div>
+            <div class="stat-card new-orders">
+                <h3>Đơn hàng mới</h3>
+                <div class="value">24</div>
+                <div class="detail"><i class="fa-solid fa-plus"></i> 8 đơn mới</div>
+            </div>
+            <div class="stat-card">
+                <h3>Tổng sản phẩm</h3>
+                <div class="value">24</div> 
+                <div class="detail" style="color: #555;">2 loại (Bánh Mousse & Hộp Thiếc)</div>
+            </div>
+            <div class="stat-card">
+                <h3>Khách hàng</h3>
+                <div class="value">1,234</div>
+                <div class="detail"><i class="fa-solid fa-user-plus"></i> 45 khách mới tuần này</div>
+            </div>
+        </div>
+
+        <h2>Đơn hàng gần đây</h2>
+        
+        <div class="filter-bar">
+            <input type="text" id="searchInput" placeholder="Tìm theo Mã đơn, Tên khách hàng, SĐT...">
+            <select id="statusFilter">
+                <option value="">Tất cả trạng thái</option>
+                <option value="pending">Chờ xác nhận</option>
+                <option value="processing">Đang làm</option>
+                <option value="completed">Hoàn thành</option>
+            </select>
+            <button class="btn-filter" id="filterButton"><i class="fa-solid fa-filter"></i> Lọc</button>
+        </div>
+
+        <div class="table-container">
+            <table class="orders-table">
+                <thead>
+                    <tr>
+                        <th>Mã đơn</th>
+                        <th>Khách hàng</th>
+                        <th>Sản phẩm</th> 
+                        <th>Tổng tiền</th>
+                        <th>Trạng thái</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody id="ordersTableBody"> <tr id="order-DH001">
+                        <td><strong>#DH001</strong></td>
+                        <td>Nguyễn Văn A</td>
+                        <td>Tiramisu x1</td>
+                        <td>580,000đ</td>
+                        <td>
+                            <select class="status-select pending" onchange="updateStatus(this, 'DH001')">
+                                <option value="pending" selected>Chờ xác nhận</option>
+                                <option value="processing">Đang làm</option>
+                                <option value="completed">Hoàn thành</option>
+                            </select>
+                        </td>
+                        <td><button class="btn-view">Xem</button></td>
+                    </tr>
+                    <tr id="order-DH002">
+                        <td><strong>#DH002</strong></td>
+                        <td>Trần Thị B</td>
+                        <td>Mousse Dưa lưới x2</td>
+                        <td>1,160,000đ</td>
+                        <td>
+                             <select class="status-select processing" onchange="updateStatus(this, 'DH002')">
+                                <option value="pending">Chờ xác nhận</option>
+                                <option value="processing" selected>Đang làm</option>
+                                <option value="completed">Hoàn thành</option>
+                            </select>
+                        </td>
+                        <td><button class="btn-view">Xem</button></td>
+                    </tr>
+                    <tr id="order-DH003">
+                        <td><strong>#DH003</strong></td>
+                        <td>Lê Văn C</td>
+                        <td>Mousse Dâu x1, Mousse Nhãn x1</td>
+                        <td>1,080,000đ</td>
+                        <td>
+                            <select class="status-select completed" onchange="updateStatus(this, 'DH003')">
+                                <option value="pending">Chờ xác nhận</option>
+                                <option value="processing">Đang làm</option>
+                                <option value="completed" selected>Hoàn thành</option>
+                            </select>
+                        </td>
+                        <td><button class="btn-view">Xem</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </main>
+
+    <div class="modal-overlay" id="orderModal">
+         <div class="modal-content">
+            <button class="modal-close" id="modalCloseButton">&times;</button>
+            <h2>Chi tiết Đơn hàng: <span id="modalOrderId">#DH001</span></h2>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3>Thông tin khách hàng</h3>
+                    <p><strong>Tên:</strong> <span id="modalCustomerName">...</span></p>
+                    <p><strong>Điện thoại:</strong> <span id="modalCustomerPhone">...</span></p>
+                    <p><strong>Địa chỉ:</strong></p>
+                    <div class="modal-address" id="modalCustomerAddress">...</div>
+                </div>
+                <div class="modal-section">
+                    <h3>Thông tin đơn hàng</h3>
+                    <p><strong>Sản phẩm:</strong> <span id="modalProducts">...</span></p>
+                    <p><strong>Tổng tiền:</strong> <span id="modalTotal">...</span></p>
+                    <p><strong>Trạng thái:</strong> <span id="modalStatus">...</span></p>
+                    <p><strong>Lời chúc:</strong></p>
+                    <div class="modal-message" id="modalMessage">...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- 1. HÀM CẬP NHẬT TRẠNG THÁI ---
+        function updateStatus(selectElement, orderId) {
+            const newStatus = selectElement.value;
+            selectElement.classList.remove('pending', 'processing', 'completed');
+            selectElement.classList.add(newStatus);
+            // Cập nhật lại data-status trên <tr> để lọc
+            selectElement.closest('tr').dataset.status = newStatus;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- 2. ÁP DỤNG MÀU CHO TRẠNG THÁI KHI TẢI TRANG ---
+            const selects = document.querySelectorAll('.status-select');
+            selects.forEach(select => {
+                const currentStatus = select.value;
+                updateStatus(select, select.closest('tr').id);
+            });
+            
+            // --- 3. LOGIC CHO MODAL (POPUP) ---
+            const orderModal = document.getElementById('orderModal');
+            const modalCloseButton = document.getElementById('modalCloseButton');
+            if (!orderModal || !modalCloseButton) return; 
+            
+            const modalOrderId = document.getElementById('modalOrderId');
+            const modalCustomerName = document.getElementById('modalCustomerName');
+            const modalCustomerPhone = document.getElementById('modalCustomerPhone');
+            const modalCustomerAddress = document.getElementById('modalCustomerAddress');
+            const modalProducts = document.getElementById('modalProducts');
+            const modalTotal = document.getElementById('modalTotal');
+            const modalStatus = document.getElementById('modalStatus');
+            const modalMessage = document.getElementById('modalMessage');
+            
+            // Dữ liệu giả lập (Anh sẽ thay bằng dữ liệu thật)
+            const mockOrderDetails = {
+                'order-DH001': { phone: '0905123456', address: '123 Đường A, Phường Bến Nghé, Quận 1, TP. HCM', message: 'Giao hàng sau 18h' },
+                'order-DH002': { phone: '0905654321', address: '456 Đường B, Quận Hải Châu, Đà Nẵng', message: '' },
+                'order-DH003': { phone: '0905789012', address: '789 Đường C, Phường Tân Lập, Buôn Ma Thuột, Đắk Lắk', message: 'Chúc mừng sinh nhật!' },
+            };
+            
+            // Hàm Mở Modal
+            function openOrderModal(data) {
+                modalOrderId.textContent = data.id;
+                modalCustomerName.textContent = data.customer;
+                modalCustomerPhone.textContent = data.phone;
+                modalCustomerAddress.textContent = data.address;
+                modalProducts.textContent = data.products;
+                modalTotal.textContent = data.total;
+                modalStatus.textContent = data.statusText;
+                modalMessage.textContent = data.message || "(Không có lời chúc)";
+                orderModal.style.display = 'flex';
+            }
+            
+            // Hàm Đóng Modal
+            function closeOrderModal() {
+                orderModal.style.display = 'none';
+            }
+
+            // Gán sự kiện click cho TẤT CẢ nút "Xem"
+            const viewButtons = document.querySelectorAll('.btn-view');
+            viewButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const row = this.closest('tr');
+                    const orderId = row.querySelector('td:nth-child(1) strong').textContent;
+                    const customer = row.querySelector('td:nth-child(2)').textContent;
+                    const products = row.querySelectorAll('td')[2].textContent; 
+                    const total = row.querySelectorAll('td')[3].textContent; 
+                    
+                    const statusSelect = row.querySelector('.status-select');
+                    const statusText = statusSelect.options[statusSelect.selectedIndex].text;
+                    const details = mockOrderDetails[row.id] || { phone: 'N/A', address: 'N/A', message: 'N/A' };
+                    
+                    const orderData = {
+                        id: orderId, customer: customer, products: products, total: total, statusText: statusText,
+                        phone: details.phone, address: details.address, message: details.message
+                    };
+                    openOrderModal(orderData);
+                });
+            });
+
+            // Gán sự kiện đóng Modal
+            modalCloseButton.addEventListener('click', closeOrderModal);
+            orderModal.addEventListener('click', function(e) {
+                if (e.target === orderModal) {
+                    closeOrderModal();
+                }
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === "Escape" && orderModal.style.display === 'flex') {
+                    closeOrderModal();
+                }
+            });
+
+            // --- 4. LOGIC CHO BỘ LỌC ---
+            const searchInput = document.getElementById('searchInput');
+            const statusFilter = document.getElementById('statusFilter');
+            const filterButton = document.getElementById('filterButton');
+            const tableBody = document.getElementById('ordersTableBody');
+            const allRows = tableBody.querySelectorAll('tr');
+
+            function filterOrders() {
+                const searchTerm = searchInput.value.toLowerCase();
+                const statusValue = statusFilter.value;
+
+                allRows.forEach(row => {
+                    // 1. Kiểm tra text
+                    const rowText = row.textContent.toLowerCase();
+                    const textMatch = rowText.includes(searchTerm);
+
+                    // 2. Kiểm tra status
+                    const rowStatus = row.querySelector('.status-select').value;
+                    const statusMatch = (statusValue === "" || rowStatus === statusValue);
+                    
+                    // 3. Ẩn/Hiện
+                    if (textMatch && statusMatch) {
+                        row.style.display = ""; // Hiển thị hàng
+                    } else {
+                        row.style.display = "none"; // Ẩn hàng
+                    }
+                });
+            }
+
+            // Gán sự kiện cho bộ lọc
+            filterButton.addEventListener('click', filterOrders);
+            searchInput.addEventListener('keyup', filterOrders);
+            statusFilter.addEventListener('change', filterOrders);
+        });
+    </script>
+</body>
+</html>

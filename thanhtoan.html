@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thanh toán – The 350F</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./thanhtoan.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="navbar">
+    <div class="nav-left">
+      <a href="./SanPham.html">Sản phẩm</a>
+      <a href="./chinhsach.html">Chính Sách</a>
+    </div>
+
+    <div class="nav-center">
+      <a href="trangchu.html">
+        <img src="./assets/LOGO.png" alt="The 350F Logo">
+      </a>
+    </div>
+
+    <div class="nav-right">
+      <a href="./LienHe.html">Liên hệ</a>
+      <a href="./giohang.html"><img src="./assets/add-to-cart.png" alt="🧺" width="30" height="30"></a>
+    </div>
+  </header>
+
+
+
+
+
+
+
+  <main class="checkout-container">
+    <h2>Thanh toán đơn hàng</h2>
+
+    <div id="checkoutInfo" class="checkout-info">
+      <p>Đang tải thông tin đơn hàng...</p>
+    </div>
+
+    <div class="checkout-summary">
+      <p><strong>Tổng tiền:</strong> <span id="checkoutTotal">0 VND</span></p>
+
+      <label for="paymentMethod"><strong>Phương thức thanh toán:</strong></label>
+      <select id="paymentMethod">
+        <option value="">-- Chọn phương thức --</option>
+        <option value="COD">Thanh toán khi nhận hàng (COD)</option>
+        <option value="NGANHANG">Ngân Hàng</option>
+        <option value="VNPAY">VNPAY</option>
+      </select>
+
+      <!-- Hiển thị mã QR -->
+      <div id="qrContainer" style="display:none; margin-top:20px; text-align:center;">
+        <h4>Quét mã để thanh toán</h4>
+        <img id="qrImage" src="" alt="QR code" width="190" height="250">
+      </div>
+
+      <button id="btnPay" class="btn-checkout" style="margin-top:20px;">Xác nhận thanh toán</button>
+    </div>
+  </main>
+
+
+
+
+
+
+  <script type="module" src="./thanhtoan.js"></script>
+</body>
+</html>

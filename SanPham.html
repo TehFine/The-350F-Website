@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sản phẩm – The 350F</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+</head>
+<body>
+
+   <header class="navbar">
+
+    <div class="nav-left">
+      <!-- <a href="./GioiThieu.html">Giới thiệu <i class="fa-solid fa-chevron-down"></i></a> -->
+      <a href="./SanPham.html" class="active">Sản phẩm</i></a>
+      <a href="./chinhsach.html">Chính Sách</a>
+    </div>
+
+
+    <div class="nav-center">
+  <a href="trangchu.html">
+    <img src="./assets/LOGO.png" alt="The 350F Logo">
+  </a>
+</div>
+
+
+
+    <div class="nav-right">
+      <a href="./LienHe.html">Liên hệ</a>
+      <a href="./giohang.html"><img src="./assets/add-to-cart.png" alt="🧺" width="30" height="30"></a>
+      <a href="#" id="search" ><img src="./assets/search.png" alt="🔍" width="30" height="30"></a>
+     <div class="user-login" id="userLogin">
+        <img src="./assets/user.png" alt="User" width="24">
+        <span id="userNameLinks">
+          <a href="./DangNhap.html">Đăng Nhập</a> /
+           <a href="./DangKy.html">Đăng Ký</a>
+         </span>
+     </div>
+    </div>
+
+    <!-- SEARCH OVERLAY
+    <div id="searchOverlay" class="search-overlay">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Nhập tên bánh...">
+        <button id="closeOverlay">Đóng</button>
+      </div>
+
+      <div id="searchResults" class="search-results"></div>
+    </div> -->
+    <div id="search-overlay">
+      <span id="close-search">✖</span>
+      <input type="text" id="search-input" placeholder="Tìm sản phẩm...">
+      <div id="search-results"></div>
+    </div>
+
+
+
+
+  </header>
+
+
+   <section class="hero-banner">
+    <img src="./assets/sp.jpg" alt="Sản phẩm The 350F">
+    <div class="breadcrumb">
+      <a href="./trangchu.html">Trang chủ</a> / <span>Sản phẩm</span>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <main class="product-section">
+  <div class="container">
+    <h2 class="section-title">Sản phẩm</h2>
+    <hr class="title-line" id="mousse" />
+
+    <div class="product-layout">
+      <!-- Sidebar Danh Mục -->
+      <aside class="product-categories">
+
+        <a href="#mousse"><button class="active" >
+          <!-- <i class="fa-solid fa-cake-candles"></i> BÁNH MOUSSE -->
+           <img src="./assets/cake.png" alt="" width="30" height="30"> BÁNH MOUSSE
+        </button>
+      </a>
+
+        <a href="#hopchiec"><button >
+          <!-- <i class="fa-solid fa-box"></i> BÁNH HỘP THIẾC -->
+           <img src="./assets/box.png" alt="" width="30" height="30"> BÁNH HỘP THIẾC
+        </button></a>
+      </aside>
+
+      <!-- Danh sách sản phẩm -->
+      <section class="product-list">
+        <h3 class="category-title" >Bánh Mousse</h3>
+
+        <div class="product-grid">
+
+          <!-- Sản phẩm 1 -->
+          <div class="product-card">
+            <div class="product-image">
+              <img src="./assets/Tiramissu.jpg" alt="Tiramisu">
+              <span class="badge hot">Hot</span>
+              <span class="badge new">Mới</span>
+            </div>
+            <div class="product-info">
+              <h4 class="product-name">Tiramisu</h4>
+                <p class="product-price">Giá từ: <span>580,000 VND</span></p>
+              <button class="btn-cart" data-name="Tiramisu" data-price="580000" data-image="./assets/Tiramissu.jpg">
+                Thêm vào giỏ hàng <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Sản phẩm 2 -->
+          <div class="product-card">
+            <div class="product-image">
+              <img src="./assets/Dua-luoi.jpg" alt="Mousse Dưa lưới">
+              <span class="badge hot">Hot</span>
+              <span class="badge new">Mới</span>
+            </div>
+            <div class="product-info">
+              <h4 class="product-name">Mousse Dưa lưới</h4>
+              <p class="product-price">Giá từ: <span>580,000 VND</span></p>
+               <button class="btn-cart" data-name="Mousse Dưa lưới" data-price="580000" data-image="./assets/Dua-luoi.jpg">
+                Thêm vào giỏ hàng <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Sản phẩm 3 -->
+          <div class="product-card">
+            <div class="product-image">
+              <img src="./assets/Dau.jpg" alt="Mousse Dâu">
+              <span class="badge hot">Hot</span>
+              <span class="badge new">Mới</span>
+            </div>
+            <div class="product-info">
+              <h4 class="product-name">Mousse Dâu</h4>
+              <p class="product-price">Giá từ: <span>540,000 VND</span></p>
+               <button class="btn-cart" data-name="Mousse Dâu" data-price="540000" data-image="./assets/Dau.jpg">
+                Thêm vào giỏ hàng <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+
+
+           <div class="product-card">
+            <div class="product-image">
+              <img src="./assets/Nhan.jpg" alt="Mousse Nhãn">
+              <span class="badge hot">Hot</span>
+              <span class="badge new">Mới</span>
+            </div>
+            <div class="product-info">
+              <h4 class="product-name">Mousse Nhãn</h4>
+              <p class="product-price">Giá từ: <span>540,000 VND</span></p>
+               <button class="btn-cart" data-name="Mousse Nhãn" data-price="540000" data-image="./assets/Nhan.jpg">
+                Thêm vào giỏ hàng <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+
+
+           <div class="product-card">
+            <div class="product-image">
+              <img src="./assets/Xoai.jpg" alt="Mousse Xoài">
+              <span class="badge hot">Hot</span>
+              <span class="badge new">Mới</span>
+            </div>
+            <div class="product-info">
+              <h4 class="product-name">Mousse Xoài</h4>
+              <p class="product-price">Giá từ: <span>540,000 VND</span></p>
+               <button class="btn-cart" data-name="Mousse Xoài" data-price="540000" data-image="./assets/Xoai.jpg">
+                Thêm vào giỏ hàng <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+
+
+           <div class="product-card">
+            <div class="product-image">
+              <img src="./assets/BuoiHong.jpg" alt="Mousse Dâu">
+              <span class="badge hot">Hot</span>
+              <span class="badge new">Mới</span>
+            </div>
+            <div class="product-info">
+              <h4 class="product-name">Mousse Bưởi Hồng</h4>
+              <p class="product-price">Giá từ: <span>540,000 VND</span></p>
+               <button class="btn-cart" data-name="Mousse Bưởi Hồng" data-price="540000" data-image="./assets/BuoiHong.jpg">
+                Thêm vào giỏ hàng <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+
+
+           <div class="product-card">
+            <div class="product-image">
+              <img src="./assets/Mousse-Blueberry.jpg" alt="Mousse Dâu">
+              <span class="badge hot">Hot</span>
+              <span class="badge new">Mới</span>
+            </div>
+            <div class="product-info">
+              <h4 class="product-name">Mousse Blueberry</h4>
+              <p class="product-price">Giá từ: <span>540,000 VND</span></p>
+               <button class="btn-cart" data-name="Mousse Blueberry" data-price="540000" data-image="./assets/Mousse-Blueberry.jpg">
+                Thêm vào giỏ hàng <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+
+
+           <div class="product-card">
+            <div class="product-image">
+              <img src="./assets/6-Mix-vi.jpg" alt="6 mix vi">
+              <span class="badge hot">Hot</span>
+              <span class="badge new">Mới</span>
+            </div>
+            <div class="product-info">
+              <h4 class="product-name">Giftset 6 Mix Vị</h4>
+              <p class="product-price">Giá từ: <span>500,000 VND</span></p>
+               <button class="btn-cart" data-name="Giftset 6 Mix Vị" data-price="500000" data-image="./assets/6-Mix-vi.jpg">
+                Thêm vào giỏ hàng <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+
+
+           <div class="product-card">
+            <div class="product-image">
+              <img src="./assets/6-nguyen-set.jpg" alt="6 nguyên set">
+              <span class="badge hot">Hot</span>
+              <span class="badge new">Mới</span>
+            </div>
+            <div class="product-info">
+              <h4 class="product-name">Giftset 6 (Nguyên set) </h4>
+              <p class="product-price">Giá từ: <span>480,0000 VND</span></p>
+               <button class="btn-cart" data-name="Giftset 6 (Nguyên set)" data-price="480000" data-image="./assets/6-nguyen-set.jpg">
+                Thêm vào giỏ hàng <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+          
+
+           <div class="product-card">
+            <div class="product-image">
+              <img src="./assets/9-mix-vi.jpg" alt="Mousse Dâu">
+              <span class="badge hot">Hot</span>
+              <span class="badge new">Mới</span>
+            </div>
+            <div class="product-info">
+              <h4 class="product-name">Giftset 9 Mix Vị</h4>
+              <p class="product-price">Giá từ: <span>660,000 VND</span></p>
+               <button class="btn-cart" data-name="Giftset 9 Mix Vị" data-price="660000" data-image="./assets/9-mix-vi.jpg">
+                Thêm vào giỏ hàng <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+
+
+           <div class="product-card">
+            <div class="product-image">
+              <img src="./assets/9-nguyen-set.jpg" alt="Mousse Dâu">
+              <span class="badge hot">Hot</span>
+              <span class="badge new">Mới</span>
+            </div>
+            <div class="product-info">
+              <h4 class="product-name">Giftset 9 Nguyên Set</h4>
+              <p class="product-price">Giá từ: <span>630,000 VND</span></p>
+               <button class="btn-cart" data-name="Giftset 9 Nguyên Set" data-price="630000" data-image="./assets/9-nguyen-set.jpg">
+                Thêm vào giỏ hàng <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+
+
+
+        <hr class="title-line"  id="hopchiec"/>
+        <h3 class="category-title" >Bánh Hộp Chiếc</h3>
+        <div class="product-grid">
+
+          <!-- Sản phẩm 1 -->
+          <div class="product-card">
+            <div class="product-image">
+              <img src="./assets/DD-Dua-luoi-14.jpg" alt="Tiramisu">
+              <span class="badge hot">Hot</span>
+              <span class="badge new">Mới</span>
+            </div>
+            <div class="product-info">
+              <h4 class="product-name">Emerald Melon Cake</h4>
+                <p class="product-price">Giá từ: <span>250,000 VND</span></p>
+              <button class="btn-cart" data-name="Emerald Melon Cake" data-price="250000" data-image="./assets/DD-Dua-luoi-14.jpg">
+                Thêm vào giỏ hàng <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Sản phẩm 2 -->
+          <div class="product-card">
+            <div class="product-image">
+              <img src="./assets/Dua-luoi-thiec-dai-dien.jpg" alt="Mousse Dưa lưới">
+              <span class="badge hot">Hot</span>
+              <span class="badge new">Mới</span>
+            </div>
+            <div class="product-info">
+              <h4 class="product-name">Emerald Melon Cake</h4>
+              <p class="product-price">Giá từ: <span>370,000 VND</span></p>
+               <button  class="btn-cart" data-name="Emerald Melon Cake" data-price="370000" data-image="./assets/Dua-luoi-thiec-dai-dien.jpg">
+                Thêm vào giỏ hàng <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Sản phẩm 3 -->
+          <div class="product-card">
+            <div class="product-image">
+              <img src="./assets/Tira-gold_dai-dien.jpg" alt="Mousse Dâu">
+              <span class="badge hot">Hot</span>
+              <span class="badge new">Mới</span>
+            </div>
+            <div class="product-info">
+              <h4 class="product-name">Tiramisu Gold Version</h4>
+              <p class="product-price">Giá từ: <span>200,000 VND</span></p>
+               <button class="btn-cart" data-name="Tiramisu Gold Version" data-price="200000" data-image="./assets/Tira-gold_dai-dien.jpg">
+                Thêm vào giỏ hàng <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+
+
+           <div class="product-card">
+            <div class="product-image">
+              <img src="./assets/Nhan.jpg" alt="Mousse Nhãn">
+              <span class="badge hot">Hot</span>
+              <span class="badge new">Mới</span>
+            </div>
+            <div class="product-info">
+              <h4 class="product-name">Double Chesse Longan</h4>
+              <p class="product-price">Giá từ: <span>270,000 VND</span></p>
+               <button class="btn-cart" data-name="Double Chesse Longan" data-price="270000" data-image="./assets/Tiramissu.jpg">
+                Thêm vào giỏ hàng <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+
+
+           <div class="product-card">
+            <div class="product-image">
+              <img src="./assets/Xoai.jpg" alt="Mousse Dâu">
+              <span class="badge hot">Hot</span>
+              <span class="badge new">Mới</span>
+            </div>
+            <div class="product-info">
+              <h4 class="product-name">Mousse Dâu</h4>
+              <p class="product-price">Giá từ: <span>540,000 VND</span></p>
+               <button class="btn-cart" class="btn-cart" data-name="Tiramisu" data-price="580000" data-image="./assets/Tiramissu.jpg">
+                Thêm vào giỏ hàng <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+
+
+           <div class="product-card">
+            <div class="product-image">
+              <img src="./assets/BuoiHong.jpg" alt="Mousse Dâu">
+              <span class="badge hot">Hot</span>
+              <span class="badge new">Mới</span>
+            </div>
+            <div class="product-info">
+              <h4 class="product-name">Mousse Dâu</h4>
+              <p class="product-price">Giá từ: <span>540,000 VND</span></p>
+               <button class="btn-cart" class="btn-cart" data-name="Tiramisu" data-price="580000" data-image="./assets/Tiramissu.jpg">
+                Thêm vào giỏ hàng <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+
+
+           <div class="product-card">
+            <div class="product-image">
+              <img src="./assets/Mousse-Blueberry.jpg" alt="Mousse Dâu">
+              <span class="badge hot">Hot</span>
+              <span class="badge new">Mới</span>
+            </div>
+            <div class="product-info">
+              <h4 class="product-name">Mousse Dâu</h4>
+              <p class="product-price">Giá từ: <span>540,000 VND</span></p>
+               <button class="btn-cart" class="btn-cart" data-name="Tiramisu" data-price="580000" data-image="./assets/Tiramissu.jpg">
+                Thêm vào giỏ hàng <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+
+
+           <div class="product-card">
+            <div class="product-image">
+              <img src="./assets/6-Mix-vi.jpg" alt="Mousse Dâu">
+              <span class="badge hot">Hot</span>
+              <span class="badge new">Mới</span>
+            </div>
+            <div class="product-info">
+              <h4 class="product-name">Mousse Dâu</h4>
+              <p class="product-price">Giá từ: <span>540,000 VND</span></p>
+               <button class="btn-cart" class="btn-cart" data-name="Tiramisu" data-price="580000" data-image="./assets/Tiramissu.jpg">
+                Thêm vào giỏ hàng <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+
+
+           <div class="product-card">
+            <div class="product-image">
+              <img src="./assets/6-nguyen-set.jpg" alt="Mousse Dâu">
+              <span class="badge hot">Hot</span>
+              <span class="badge new">Mới</span>
+            </div>
+            <div class="product-info">
+              <h4 class="product-name">Mousse Dâu</h4>
+              <p class="product-price">Giá từ: <span>540,000 VND</span></p>
+               <button class="btn-cart" class="btn-cart" data-name="Tiramisu" data-price="580000" data-image="./assets/Tiramissu.jpg">
+                Thêm vào giỏ hàng <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+          
+
+           <div class="product-card">
+            <div class="product-image">
+              <img src="./assets/9-mix-vi.jpg" alt="Mousse Dâu">
+              <span class="badge hot">Hot</span>
+              <span class="badge new">Mới</span>
+            </div>
+            <div class="product-info">
+              <h4 class="product-name">Mousse Dâu</h4>
+              <p class="product-price">Giá từ: <span>540,000 VND</span></p>
+               <button class="btn-cart" class="btn-cart" data-name="Tiramisu" data-price="580000" data-image="./assets/Tiramissu.jpg">
+                Thêm vào giỏ hàng <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+
+
+           <div class="product-card">
+            <div class="product-image">
+              <img src="./assets/9-nguyen-set.jpg" alt="Mousse Dâu">
+              <span class="badge hot">Hot</span>
+              <span class="badge new">Mới</span>
+            </div>
+            <div class="product-info">
+              <h4 class="product-name">Mousse Dâu</h4>
+              <p class="product-price">Giá từ: <span>540,000 VND</span></p>
+               <button class="btn-cart" class="btn-cart" data-name="Tiramisu" data-price="580000" data-image="./assets/Tiramissu.jpg">
+                Thêm vào giỏ hàng <i class="fa-solid fa-cart-shopping"></i>
+              </button>
+            </div>
+          </div>
+
+
+
+        </div>
+
+
+
+      </section>
+    </div>
+  </div>
+</main>
+
+
+  
+  
+
+ <div class="fixed-contact">
+        <a href="https://zalo.me/" class="circle-btn zalo">Zalo</a>
+        <a href="https://m.me/" class="circle-btn messenger"><i class="fa-brands fa-facebook-messenger"></i></a>
+        <a href="tel:0123456789" class="circle-btn phone"><i class="fa-solid fa-phone"></i></a>
+  </div>
+
+
+
+    <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer-left">
+      <img src="./assets/footer.jpg" alt="The 350F Store">
+    </div>
+
+    <div class="footer-right">
+      <div class="footer-info">
+        <div class="footer-column">
+          <h3>The 350F Flagship</h3>
+          <p>Lầu 5 Saigon Centre, 65 Lê Lợi, P. Sài Gòn, TP.HCM</p>
+          <p>07-09 Hoa Phượng, P. Cầu Kiệu, TP.HCM</p>
+          <p>69A Xuân Thủy, P. An Khánh, TP.HCM</p>
+        </div>
+
+        <div class="footer-column">
+          <h3>The 350F To Go</h3>
+          <p>36 Nguyễn Trãi, P. Bến Thành, TP.HCM</p>
+          <p>05 Hoa Phượng, P. Cầu Kiệu, TP.HCM</p>
+          <p>76 Ngô Đức Kế, P. Sài Gòn, TP.HCM</p>
+        </div>
+      </div>
+
+      <div class="footer-contact">
+        <div class="contact-item">
+          <i class="fa-solid fa-phone"></i>
+          <span>1800 8287</span>
+        </div>
+
+        <div class="contact-item">
+          <i class="fa-regular fa-envelope"></i>
+          <span>contact@the350f.com</span>
+        </div>
+      </div>
+
+      <p class="slogan">Taste of Passion!</p>
+
+      <div class="footer-triangle">
+        <div class="triangle1">
+          <img src="./assets/cake.png" alt="" width="30" height="30" class="img-default">
+          <img src="./assets/cake-1.webp" alt="" width="40" height="40" class="img-hover">
+        </div>
+        <div class="triangle2">
+          <img src="./assets/roll-cake.png" alt="" width="30" height="30" class="img-default">
+         <img src="./assets/cake-2.webp" alt="" width="40" height="40" class="img-hover">
+        </div>
+        <div class="triangle3">
+          <img src="./assets/cupcake.png" alt="" width="30" height="30" class="img-default">
+         <img src="./assets/cake-3.webp" alt="" width="40" height="40" class="img-hover">
+        </div>
+      </div>
+
+      <div class="footer-company">
+        <p><strong>Công ty Cổ phần The 350F</strong></p>
+        <p>Mã số thuế: 0317557505 do Sở KHĐT TP.HCM cấp ngày 08/11/2022</p>
+        <p>Địa chỉ: 12 – 14 Phan Sào Nam, Phường Bảy Hiền, TP. Hồ Chí Minh</p>
+        <p>Văn phòng giao dịch: 11-13-15 Hoa Lan, P. Cầu Kiệu, TP. Hồ Chí Minh</p>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 The 350F. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+
+<script  src="./hienthinguoidung.js"></script>  
+<script type="module" src="./dangxuat.js"></script>
+<script src="mainscript.js"></script> 
+<script type="module" src="./sanpham.js"></script>
+<script src="./DangKy.js"></script>
+<script type="module" src="./timkiem.js"></script>
+
+</body> 
+ 
+</html>
